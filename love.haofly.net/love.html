@@ -45,10 +45,13 @@
 								minSize: 5,
 								maxSize: 22
 							});
-							
-							$('.sec2').find('div.words').delay(500).animate({
-									left: '+=500px'
-								}, 1500);
+
+							var sec2w = $('.sec2').find('div.words');
+                            if (sec2w.offset().left < 1000) {
+                                sec2w.delay(500).animate({
+                                    left: '+=500px'
+                                }, 1500);
+                            }
 						}
 						if(index == 4){		// 心形
 							$(document).snowfall('clear');
@@ -63,6 +66,26 @@
 				});
 			});
 		</script>
+        <script>
+        // 点击网页，全屏显示
+        var elem = false;
+        function goFullScreen() {
+            //elem = document.getElementById("fullpage");
+            elem = document.body;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            }
+            if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+            if (elem.mozRequestFullscreen) {
+                elem.mozRequestFullscreen();
+            }
+            if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+        </script>
 
 
 		<!--内部元素样式-->
@@ -175,7 +198,7 @@
 		</style>
 	</head>
 
-	<body>
+	<body onclick="goFullScreen()">
 		<audio src="music/beautiful.mp3" autoplay="autoplay"></audio>
 		<div id="fullpage">
 			<div class="section sec1">
